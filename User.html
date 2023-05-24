@@ -9,32 +9,26 @@
 </head>
 <body>
     <div class="box">
-        <h1 class="title is-1">🚘 Driver Form</h1>
+        <h1 class="title is-1">🫥 User Form</h1>
         <h2 class="subtitle is-3">Fill your data in this form</h2>
     </div>
     <div class="box my-6">
         <div class="field">
-            <label class="label" for="firstName">First name:</label>
+            <label class="label" for="firstname">First name:</label>
             <div class="control">
-                <input class="input" type="text" id="firstName" placeholder="Exammple: Carlos">
+                <input class="input" type="text" id="firstname" placeholder="Exammple: Carlos">
             </div>
         </div>
         <div class="field">
-            <label class="label" for="lastName">Last name:</label>
+            <label class="label" for="lastname">Last name:</label>
             <div class="control">
-                <input class="input" type="text" id="lastName" placeholder="Example: Terraza">
+                <input class="input" type="text" id="lastname" placeholder="Example: Terraza">
             </div>
         </div>
         <div class="field">
             <label class="label" for="email">Email:</label>
             <div class="control">
                 <input class="input" type="text" id="email" placeholder="Example: carlos@gmail.com">
-            </div>
-        </div>
-        <div class="field">
-            <label class="label" for="PhoneNumber">Phone Number:</label>
-            <div class="control">
-                <input class="input" type="text" id="PhoneNumber" placeholder="Example: 69487589">
             </div>
         </div>
         <div class="block">
@@ -46,14 +40,13 @@
 
             function getValues() {
                 return {
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
+                    firstname: document.getElementById('firstname').value,
+                    lastname: document.getElementById('lastname').value,
                     email: document.getElementById('email').value,
                 }
             }
             
-
-            const url = 'http://localhost:3000/driver';
+            const url = 'http://localhost:3000/user';
             const method = 'POST';
             const headers = {
                 'Accept': 'application/json',

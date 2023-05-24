@@ -3,7 +3,6 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-
 app.use(bodyParser.json());
 
 app.use(cors({
@@ -16,20 +15,18 @@ app.get('/', (req, res) => {
   res.send('API is working');
 })
 
-app.post('/driver',(req, res) => {
+app.post('/user',(req, res) => {
   const body = req.body;
-
-  const query = `INSERT INTO user(firstName, lastName, email) VALUES ('${body.firstName}', '${body.lastName}','${body.email}');`;
+  const query = `INSERT INTO user(firstname, lastname, email) VALUES ('${body.firstName}', '${body.lastName}','${body.email}');`;
   connection.query( query, (err, rows, fields) => {
     if (err) throw err
     console.log('1 record inserted');
   })
-
   res.send('1 record inserted');
 })
 
 app.listen(port, () => {
-  console.log(`Project sample is running on: ${port}`)
+  console.log(`The Project Is Running On: ${port}`)
 })
 
 const connection = mysql.createConnection({
@@ -40,24 +37,4 @@ const connection = mysql.createConnection({
   database: 'db1'
 })
 
-connection.connect();
-
-/*var mysql      = require('mysql2');
-var connection = mysql.createConnection({
-  host: "localhost",
-    user: "new_user",
-    password: "password",
-    database: "db1",
-    port:"3307",
-    multipleStatements: true
-});
-connection.connect();
-
-connection.query('SELECT * FROM user', function(err, rows, fields) 
-{
-  if (err) throw err;
-
-  console.log(rows[0]);
-});
-
-connection.end();*/
+connection.connect(()  => console.log('Conected To DataBase ...'));
