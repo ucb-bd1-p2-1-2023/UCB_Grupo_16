@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>In Driver</title>
+    <style>
+        body {
+            padding: 150px;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-title {
+            text-align: center;
+            animation: slideInDown 1s ease-in-out;
+        }
+
+        .submit-button {
+            margin-top: 70px;
+            animation: scaleIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 style = "color: rgb(239, 89, 19)" class="form-title title is-1">Registar Nuevo Pasajero</h1>
+        <h2 style = "color: rgb(98, 91, 243)"class="form-title subtitle is-3">Inserte Sus Datos :3</h2>
+
+        <div class="field">
+            <label class="label" for="CI">Carnet De Identidad:</label>
+            <div class="control input-container">
+                <input class="input" type="text" id="CI" placeholder="Example: 13002270">
+            </div>
+        </div>
+
+        <div class="box my-6">
+            <div class="field">
+                <label class="label" for="Nombres">Nombres:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Nombres" placeholder="Example: Douglas Freddy">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="Apellidos">Apellidos:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Apellidos" placeholder="Example: Mendez Cespedes">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="Email">Email:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Email" placeholder="Example: douglasdfmc@gmail.com">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="Ciudad">Ciudad:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Ciudad" placeholder="Example: Cochabamba">
+                </div>
+            </div>
+
+            <div class="block">
+                <button style = "color: rgb(0, 0, 0)" class="button is-primary is-fullwidth submit-button" onclick="submitForm()">REGISTRAR</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            function getValues() {
+                return {
+                    CI: document.getElementById('CI').value,
+                    Nombres: document.getElementById('Nombres').value,
+                    Apellidos: document.getElementById('Apellidos').value,
+                    Email: document.getElementById('Email').value,
+                    Ciudad: document.getElementById('Ciudad').value
+                }
+            }
+
+            console.log(getValues());
+            const url = 'http://localhost:3000/Pasajero';
+            const method = 'POST';
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const body = JSON.stringify(getValues());
+            const metadata = { method, headers, body };
+            fetch(url, metadata)
+                .then(response => response.json())
+                .then(response => console.log(JSON.stringify(response)))
+        }
+    </script>
+</body>
+</html>

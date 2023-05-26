@@ -11,13 +11,10 @@ app.use(cors({
 
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('API is working');
-})
-
-app.post('/user',(req, res) => {
+app.post('/Pasajero',(req, res) => {
   const body = req.body;
-  const query = `INSERT INTO user(firstname, lastname, email) VALUES ('${body.firstName}', '${body.lastName}','${body.email}');`;
+  const query = `INSERT INTO Pasajero(CI, Nombres, Apellidos, Email, Ciudad) VALUES 
+                                  ('${body.CI}', '${body.Nombres}','${body.Apellidos}','${body.Email}','${body.Ciudad}');`;
   connection.query( query, (err, rows, fields) => {
     if (err) throw err
     console.log('1 record inserted');
@@ -31,10 +28,10 @@ app.listen(port, () => {
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  port: '3307',
+  port: '3306',
   user: 'root',
-  password: 'root',
-  database: 'db1'
+  password: 'password',
+  database: 'InDrive'
 })
 
 connection.connect(()  => console.log('Conected To DataBase ...'));

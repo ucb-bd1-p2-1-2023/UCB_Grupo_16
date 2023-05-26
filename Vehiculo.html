@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>In Driver</title>
+    <style>
+        body {
+            padding: 150px;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-title {
+            text-align: center;
+            animation: slideInDown 1s ease-in-out;
+        }
+
+        .submit-button {
+            margin-top: 70px;
+            animation: scaleIn 0.5s ease-in-out;
+        }
+    </style>
+<body>
+    <div class="form-container">
+        <h1 style = "color: rgb(239, 89, 19)" class="form-title title is-1">Registar Nuevo Vehiculo</h1>
+        <h2 style = "color: rgb(98, 91, 243)"class="form-title subtitle is-3">Inserte Sus Datos :]</h2>
+
+        <div class="field">
+            <label class="label" for="Numero_Chasis">Ingrese El Numero De Chasis De Su Vehiculo:</label>
+            <div class="control input-container">
+                <input class="input" type="text" id="Numero_Chasis" placeholder="Example: 756782314912">
+            </div>
+        </div>
+
+        <div class="box my-6">
+            <div class="field">
+                <label class="label" for="Placa">Numero De Placa:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Placa" placeholder="Example: 2839-GEB">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="Modelo">Modelo Del Vehiculo:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Modelo" placeholder="Example: ASX">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="Fabricante">Fabricante:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Fabricante" placeholder="Example: Mitsubishi">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="Color">Color Del Vehiculo:</label>
+                <div class="control input-container">
+                    <input class="input" type="text" id="Color" placeholder="Example: Gris">
+                </div>
+            </div>
+
+            <div class="block">
+                <button  style = "color: rgb(0, 0, 0)" class="button is-primary is-fullwidth submit-button" onclick="submitForm()">REGISTRAR</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            function getValues() {
+                return {
+                    Numero_Chasis: document.getElementById('Numero_Chasis').value,
+                    Placa: document.getElementById('Placa').value,
+                    Modelo: document.getElementById('Modelo').value,
+                    Fabricante: document.getElementById('Fabricante').value,
+                    Color: document.getElementById('Color').value
+                }
+            }
+
+            console.log(getValues());
+            const url = 'http://localhost:3000/Vehiculo';
+            const method = 'POST';
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const body = JSON.stringify(getValues());
+            const metadata = { method, headers, body };
+            fetch(url, metadata)
+                .then(response => response.json())
+                .then(response => console.log(JSON.stringify(response)))
+        }
+    </script>
+</body>
+</html>
