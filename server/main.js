@@ -22,6 +22,39 @@ app.post('/Pasajero',(req, res) => {
   res.send('1 record inserted');
 })
 
+app.post('/Conductor',(req, res) => {
+  const body = req.body;
+  const query = `INSERT INTO Conductor(Licencia, Numero_Chasis, Nombres, Apellidos, Edad) VALUES 
+                                  ('${body.Licencia}', '${body.Numero_Chasis}','${body.Nombres}','${body.Apellidos}','${body.Edad}');`;
+  connection.query( query, (err, rows, fields) => {
+    if (err) throw err
+    console.log('1 record inserted');
+  })
+  res.send('1 record inserted');
+})
+
+app.post('/Ubicacion',(req, res) => {
+  const body = req.body;
+  const query = `INSERT INTO Ubicacion(Origen, Destino, Oferta) VALUES 
+                                  ('${body.Origen}', '${body.Destino}','${body.Oferta}');`;
+  connection.query( query, (err, rows, fields) => {
+    if (err) throw err
+    console.log('1 record inserted');
+  })
+  res.send('1 record inserted');
+})
+
+app.post('/Vehiculo',(req, res) => {
+  const body = req.body;
+  const query = `INSERT INTO Vehiculo(Numero_Chasis, Placa, Modelo, Fabricante, Color) VALUES 
+                                  ('${body.Numero_Chasis}', '${body.Placa}','${body.Modelo}','${body.Fabricante}','${body.Color}');`;
+  connection.query( query, (err, rows, fields) => {
+    if (err) throw err
+    console.log('1 record inserted');
+  })
+  res.send('1 record inserted');
+})
+
 app.listen(port, () => {
   console.log(`The Project Is Running On: ${port}`)
 })
