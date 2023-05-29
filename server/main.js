@@ -24,8 +24,8 @@ app.post('/Pasajero',(req, res) => {
 
 app.post('/Conductor',(req, res) => {
   const body = req.body;
-  const query = `INSERT INTO Conductor(Licencia, Numero_Chasis, Nombres, Apellidos, Edad) VALUES 
-                                  ('${body.Licencia}', '${body.Numero_Chasis}','${body.Nombres}','${body.Apellidos}','${body.Edad}');`;
+  const query = `INSERT INTO Conductor(Numero_Licencia, Numero_Chasis, Nombres, Apellidos, Edad) VALUES 
+                                  ('${body.Numero_Licencia}', '${body.Numero_Chasis}','${body.Nombres}','${body.Apellidos}','${body.Edad}');`;
   connection.query( query, (err, rows, fields) => {
     if (err) throw err
     console.log('1 record inserted');
